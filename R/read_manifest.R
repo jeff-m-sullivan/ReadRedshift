@@ -22,8 +22,9 @@ manifest_filelist <- function(manifest) {
 #'
 #' @examples
 manifest_headers <- function(manifest) {
-  list(names = c(),
-       types = c()
+  j <- jsonlite::read_json(manifest)
+  list(names = sapply(j$schema$elements, function(e) e$name),
+       types = sapply(j$schema$elements, function(e) e$type$base)
   )
 }
 
@@ -36,5 +37,6 @@ manifest_headers <- function(manifest) {
 #'
 #' @examples
 manifest_records <- function(manifest) {
-  -1
+  j <- jsonlite::read_json(manifest)
+  j$meta$record_count
 }
