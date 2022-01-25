@@ -1,7 +1,7 @@
 {
   "entries": [
     {"url":"s3://mybucket/venue_csv0000", "meta": { "content_length": 1, "record_count": 3 }},
-    {"url":"s3://mybucket/venue_csv0001", "meta": { "content_length": 1, "record_count": 5 }}
+    {"url":"s3://mybucket/venue_csv0001", "meta": { "content_length": 1, "record_count": 3 }}
   ],
   "schema": {
     "elements": [
@@ -14,7 +14,7 @@
   },
   "meta": {
     "content_length": 2,
-    "record_count": 8
+    "record_count": 6
   },
   "author": {
     "name": "Amazon Redshift",
