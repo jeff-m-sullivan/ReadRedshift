@@ -1,4 +1,4 @@
-#' readRedshift will read in the contents of a manifest and return a data.frame
+#' read_redshift will read in the contents of a manifest and return a data.frame
 #'
 #' @param manifest_file path to a Redshift manifest file
 #'
@@ -8,7 +8,8 @@
 #' @export
 #'
 #' @examples
-#' venue_data <- readRedshift(system.file("extdata","venuemanifest", package="ReadRedshift"))
-readRedshift <- function(manifest_file) {
+#' venue_data <- read_redshift(system.file("extdata","venuemanifest",
+#'  package="ReadRedshift"))
+read_redshift <- function(manifest_file) {
   data.frame()
 }
