@@ -7,7 +7,7 @@
 readRedshift(manifest_file)
 }
 \arguments{
-\item{manifest_file}{path to a RedShift manifest file}
+\item{manifest_file}{path to a Redshift manifest file}
 }
 \value{
 the data.frame containing the validated data specified
