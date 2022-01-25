@@ -1,0 +1,19 @@
+Package: ReadRedshift
+Type: Package
+Title: Read and Validate RedShift Unloads
+Version: 0.1.0
+Authors@R:
+  person(given="Jeff",
+  family="Sullivan",
+  email="jeffrey.mudge.sullivan@gmail.com",
+  role=c("aut","cre")
+  )
+Description: This package provides some simple utilities to use RedShift
+    manifest files along with the unloaded contents to create and validate
+    data.frame objects.
+License: `use_mit_license()`
+Roxygen: list(markdown = TRUE)
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    jsonlite
