@@ -8,6 +8,7 @@
 #' @export
 #'
 #' @examples
+#' venue_data <- readRedshift(system.file("extdata","venuemanifest", package="ReadRedshift"))
 readRedshift <- function(manifest_file) {
   data.frame()
 }

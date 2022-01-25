@@ -17,3 +17,6 @@ is specified.
 \description{
 readRedshift will read in the contents of a manifest and return a data.frame
 }
+\examples{
+venue_data <- readRedshift(system.file("extdata","venuemanifest", package="ReadRedshift"))
+}
