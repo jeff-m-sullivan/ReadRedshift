@@ -1,7 +1,7 @@
 {
   "entries": [
     {"url":"s3://mybucket/venue_csv0000", "meta": { "content_length": 1, "record_count": 3 }},
-    {"url":"s3://mybucket/venue_csv0001", "meta": { "content_length": 1, "record_count": 5 }},
+    {"url":"s3://mybucket/venue_csv0001", "meta": { "content_length": 1, "record_count": 5 }}
   ],
   "schema": {
     "elements": [
