@@ -11,5 +11,9 @@
 #' venue_data <- read_redshift(system.file("extdata","venuemanifest",
 #'  package="ReadRedshift"))
 read_redshift <- function(manifest_file) {
-  data.frame()
+  files <- manifest_filelist(manifest_file)
+  headers <- manifest_headers(manifest_file)$names
+
+  data <- lapply(files, readr::read_delim, col_names = headers)
+  do.call(rbind, data)
 }
