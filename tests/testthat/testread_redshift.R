@@ -11,10 +11,10 @@ test_that(
 })
 
 test_that("Generated data has proper names", {
-  expect_equal(sort(names(
+  expect_equal(names(
                  read_redshift(
                    system.file("extdata", "venuemanifest", package = "ReadRedshift")
                  )
-               )),
-               sort(names(venue)))
+               ),
+               names(venue))
 })
