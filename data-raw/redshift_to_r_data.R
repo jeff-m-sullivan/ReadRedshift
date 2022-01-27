@@ -3,7 +3,8 @@
 redshift_to_r_data <- list(
   "double precision" = "d",
   "character varying" = "c",
-  "date" = "T"
+  "date" = "T",
+  "integer" = "i"
 )
 
 usethis::use_data(redshift_to_r_data, overwrite = TRUE)

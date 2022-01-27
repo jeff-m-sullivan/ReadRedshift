@@ -5,7 +5,7 @@
 \alias{redshift_to_r_data}
 \title{A list to convert from RedShift data types to readr column specs}
 \format{
-An object of class \code{list} of length 3.
+An object of class \code{list} of length 4.
 }
 \usage{
 redshift_to_r_data
