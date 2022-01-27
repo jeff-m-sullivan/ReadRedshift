@@ -16,7 +16,7 @@ read_redshift <- function(manifest_file) {
   types <- manifest_headers(manifest_file)$types
   n_records <- manifest_records(manifest_file)
 
-  col_spec <- paste(create_col_spec(types), sep = "", collapse = " ")
+  col_spec <- paste(create_col_spec(types), sep = "", collapse = "")
   data <- lapply(files,
                  readr::read_delim,
                  col_names = headers,
@@ -57,6 +57,7 @@ genereate_stata_infile <- function(manifest_file) {
             , basename(f),
             ", clear",
             sep = " "),
+        "compress",
         paste("save", f, ", replace", sep = " ")
       ),
     v = varlist
