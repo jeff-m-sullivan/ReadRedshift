@@ -8,7 +8,7 @@
 An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 6 rows and 5 columns.
 }
 \source{
-\url{https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD_command_examples.html}
+\url{https://docs.aws.amazon.com/redshift/latest/dg/}
 
 Last accessed on Jan 25, 2022.
 }
