@@ -7,4 +7,4 @@ redshift_to_r_data <- list(
   "integer" = "i"
 )
 
-usethis::use_data(redshift_to_r_data, overwrite = TRUE)
+usethis::use_data(redshift_to_r_data, internal = TRUE)
