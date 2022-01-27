@@ -42,7 +42,8 @@ insert_header <- function(manifest_file) {
   fout <- file(paste0(manifest_file, "_edit.sh"))
   writeLines(paste0("sed -i '1s/^/",
   header_row,
-  "\\n/' ", files))
+  "\\n/' ", files),
+  fout)
   close(fout)
 }
 
