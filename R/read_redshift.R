@@ -16,11 +16,16 @@ read_redshift <- function(manifest_file) {
   types <- manifest_headers(manifest_file)$types
   n_records <- manifest_records(manifest_file)
 
-  col_spec <- paste(redshift_to_r_data[types], sep = "", collapse = "")
+  col_spec <- create_col_spec(types)
   data <- lapply(files, readr::read_delim,
                  col_names = headers,
                  col_types = col_spec)
   d <- do.call(rbind, data)
   stopifnot(n_records == nrow(d))
   return(d)
+}
+
+create_col_spec <- function(t) {
+  stopifnot(all(t %in% names(redshift_to_r_data)))
+  paste(redshift_to_r_data[t], sep = "", collapse = "")
 }
