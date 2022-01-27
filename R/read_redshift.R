@@ -14,10 +14,13 @@ read_redshift <- function(manifest_file) {
   files <- manifest_filelist(manifest_file)
   headers <- manifest_headers(manifest_file)$names
   types <- manifest_headers(manifest_file)$types
+  n_records <- manifest_records(manifest_file)
 
   col_spec <- paste(redshift_to_r_data[types], sep="", collapse="")
   data <- lapply(files, readr::read_delim,
                  col_names = headers,
                  col_types = col_spec)
-  do.call(rbind, data)
+  d <- do.call(rbind, data)
+  stopifnot(n_records == nrow(d))
+  return(d)
 }
