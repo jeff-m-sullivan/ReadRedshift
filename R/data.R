@@ -7,6 +7,3 @@
 #'
 #' Last accessed on Jan 25, 2022.
 "venue"
-
-#' A list to convert from RedShift data types to readr column specs
-"redshift_to_r_data"
