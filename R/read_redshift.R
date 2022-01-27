@@ -26,6 +26,26 @@ read_redshift <- function(manifest_file) {
   return(d)
 }
 
+#' Create scripts to add header lines to all files in a manifest
+#'
+#' @param manifest_file the manifest to be processed
+#'
+#' @return silent; the script is written directly
+#' @export
+#'
+#' @examples
+insert_header <- function(manifest_file) {
+  files <- manifest_filelist(manifest_file)
+  headers <- manifest_headers(manifest_file)$names
+  header_row <- paste(headers, collapse=",")
+
+  fout <- file(paste0(manifest_file, "_edit.sh"))
+  writeLines(paste0("sed -i '1s/^/",
+  header_row,
+  "\\n/' ", files))
+  close(fout)
+}
+
 create_col_spec <- function(t, conversion = redshift_to_r_data) {
   stopifnot(all(t %in% names(conversion)))
   conversion[t]
