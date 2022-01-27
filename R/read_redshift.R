@@ -34,12 +34,12 @@ create_col_spec <- function(t, conversion = redshift_to_r_data) {
 
 #' Create a Stata infile script
 #'
-#' @param manifest the manifest to be processed
+#' @param manifest_file the manifest to be processed
 #'
 #' @return nothing; file is written directly
 #' @export
 #'
-genereate_stata_infile <- function(manifest_file) {
+generate_stata_infile <- function(manifest_file) {
   files <- manifest_filelist(manifest_file)
   headers <- manifest_headers(manifest_file)$names
   types <- manifest_headers(manifest_file)$types

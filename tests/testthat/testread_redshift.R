@@ -17,7 +17,7 @@ test_that("Generated data has proper names", {
 })
 
 test_that("Stata file is properly constructed", {
-  expect_silent(genereate_stata_infile(
+  expect_silent(generate_stata_infile(
     system.file("extdata", "venuemanifest", package = "ReadRedshift")
   ))
 })
