@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/jeff-m-sullivan/ReadRedshift/workflows/R-CMD-check/badge.svg)](https://github.com/jeff-m-sullivan/ReadRedshift/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/jeff-m-sullivan/ReadRedshift/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jeff-m-sullivan/ReadRedshift?branch=master)
 <!-- badges: end -->
 
 The goal of ReadRedshift is to …
