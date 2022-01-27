@@ -16,8 +16,9 @@ read_redshift <- function(manifest_file) {
   types <- manifest_headers(manifest_file)$types
   n_records <- manifest_records(manifest_file)
 
-  col_spec <- create_col_spec(types)
-  data <- lapply(files, readr::read_delim,
+  col_spec <- paste(create_col_spec(types), sep = "", collapse = " ")
+  data <- lapply(files,
+                 readr::read_delim,
                  col_names = headers,
                  col_types = col_spec)
   d <- do.call(rbind, data)
@@ -25,7 +26,40 @@ read_redshift <- function(manifest_file) {
   return(d)
 }
 
-create_col_spec <- function(t) {
-  stopifnot(all(t %in% names(redshift_to_r_data)))
-  paste(redshift_to_r_data[t], sep = "", collapse = "")
+create_col_spec <- function(t, conversion = redshift_to_r_data) {
+  stopifnot(all(t %in% names(conversion)))
+  conversion[t]
+}
+
+
+#' Create a Stata infile script
+#'
+#' @param manifest the manifest to be processed
+#'
+#' @return nothing; file is written directly
+#' @export
+#'
+genereate_stata_infile <- function(manifest_file) {
+  files <- manifest_filelist(manifest_file)
+  headers <- manifest_headers(manifest_file)$names
+  types <- manifest_headers(manifest_file)$types
+
+  t <- create_col_spec(types, conversion = redshift_to_stata_data)
+  varlist <- paste(t, headers, collapse = " ")
+
+  outf <- file(paste(basename(manifest_file), ".do", sep = ""))
+  writeLines(sapply(
+    files,
+    FUN = function(f, v)
+      c(paste("infile",
+            v,
+            "using"
+            , basename(f),
+            ", clear",
+            sep = " "),
+        paste("save", f, ", replace", sep = " ")
+      ),
+    v = varlist
+  ), outf)
+  close(outf)
 }
