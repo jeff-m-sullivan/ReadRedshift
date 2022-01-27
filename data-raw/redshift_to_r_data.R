@@ -7,4 +7,13 @@ redshift_to_r_data <- list(
   "integer" = "i"
 )
 
-usethis::use_data(redshift_to_r_data, internal = TRUE)
+# Mappsing from RedShift datatypes to Stata
+
+redshift_to_stata_data <- list(
+  "double precision" = "double",
+  "character varying" = "str500",
+  "date" = "str20",
+  "integer" = "long"
+)
+
+usethis::use_data(redshift_to_stata_data, redshift_to_r_data, overwrite = TRUE, internal = TRUE)
