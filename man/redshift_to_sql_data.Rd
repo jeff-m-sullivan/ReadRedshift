@@ -15,7 +15,3 @@ a string representing this type in SQL format
 \description{
 Internal function to convert data, since SQL is harder to handle
 }
-\examples{
-redshift_to_sql_data(
-list("base"= "character varying", "max_length"= 25))
-}

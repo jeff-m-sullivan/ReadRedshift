@@ -92,9 +92,6 @@ generate_stata_infile <- function(manifest_file) {
 #'
 #' @return a string representing this type in SQL format
 #'
-#' @examples
-#' redshift_to_sql_data(
-#' list("base"= "character varying", "max_length"= 25))
 redshift_to_sql_data <- function(type_list) {
   stopifnot("base" %in% names(type_list))
 
@@ -119,7 +116,7 @@ redshift_to_sql_data <- function(type_list) {
 #' @export
 #'
 #' @examples
-generate_sql_load <- function(manifest_file) {
+generate_sql_load <- function(manifest_file, s3_url) {
 
 
 }
