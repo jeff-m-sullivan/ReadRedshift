@@ -132,6 +132,11 @@ generate_sql_load <- function(manifest_file, s3_url) {
 
   variables <- jsonlite::read_json(manifest_file)$schema$elements
   varstmts <- sapply(variables, FUN = function(e) paste0(e$name, "\t", redshift_to_sql_data(e$type), ","))
+
+  # Need to remove trailing comma
+  N <- length(varstmts)
+  varstmts[N] <- substr(varstmts[N],1,nchar(varstmts[N])-1)
+
   writeLines(varstmts, outfile)
   writeLines(c(
     ");", "",
