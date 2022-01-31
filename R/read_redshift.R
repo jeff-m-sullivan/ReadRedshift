@@ -85,3 +85,32 @@ generate_stata_infile <- function(manifest_file) {
   ), outf)
   close(outf)
 }
+
+#' Internal function to convert data, since SQL is harder to handle
+#'
+#' @param type_list type list with parameters for single data element
+#'
+#' @return a string representing this type in SQL format
+#'
+#' @examples
+#' redshift_to_sql_data(
+#' list("base"= "character varying", "max_length"= 25))
+redshift_to_sql_data <- function(type_list) {
+
+}
+
+
+#' Generate SQL loading statements from a manifest file. This assumes that the
+#' tables need to be created and then the data copied in.
+#'
+#' @param manifest_file local path to the manifest file
+#' @param s3_url the S3 bucket where the manifest will be stored for loading
+#'
+#' @return nothing; SQL statements written to file
+#' @export
+#'
+#' @examples
+generate_sql_load <- function(manifest_file) {
+
+
+}

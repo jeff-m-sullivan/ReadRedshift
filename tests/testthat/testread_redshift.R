@@ -22,3 +22,18 @@ test_that("Stata file is properly constructed", {
   ))
 })
 
+test_that("SQL data types rendered properly", {
+  expect_equal(redshift_to_sql_data(
+    list(base = "double precision")),
+    "DOUBLE")
+  expect_equal(redshift_to_sql_data(
+    list(base = "date")),
+    "DATE")
+  expect_equal(redshift_to_sql_data(
+    list(base = "integer")),
+    "INTEGER")
+  expect_equal(redshift_to_sql_data(
+    list(base = "character varying",
+         max_length = 25)),
+    "VARCHAR(25)")
+})
