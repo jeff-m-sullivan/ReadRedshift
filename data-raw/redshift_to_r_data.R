@@ -7,7 +7,7 @@ redshift_to_r_data <- list(
   "integer" = "i"
 )
 
-# Mappsing from RedShift datatypes to Stata
+# Mappings from RedShift datatypes to Stata
 
 redshift_to_stata_data <- list(
   "double precision" = "double",
