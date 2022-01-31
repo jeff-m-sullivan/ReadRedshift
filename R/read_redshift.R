@@ -136,7 +136,7 @@ generate_sql_load <- function(manifest_file, s3_url) {
   writeLines(c(
     ");", "",
     paste0("copy ", table_name),
-    paste0("from '", s3_url, "'/", basename(manifest_file)),
+    paste0("from '", s3_url, "/", basename(manifest_file),"'"),
     "manifest"
   ), outfile)
   close(outfile)
