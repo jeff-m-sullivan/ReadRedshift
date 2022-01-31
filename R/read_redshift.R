@@ -8,8 +8,9 @@
 #' @export
 #'
 #' @examples
-#' venue_data <- read_redshift(system.file("extdata","venuemanifest",
-#'  package="ReadRedshift"))
+#' venue_data <- read_redshift(system.file("extdata", "venuemanifest",
+#'   package = "ReadRedshift"
+#' ))
 read_redshift <- function(manifest_file) {
   files <- manifest_filelist(manifest_file)
   headers <- manifest_headers(manifest_file)$names
@@ -18,9 +19,10 @@ read_redshift <- function(manifest_file) {
 
   col_spec <- paste(create_col_spec(types), sep = "", collapse = "")
   data <- lapply(files,
-                 readr::read_delim,
-                 col_names = headers,
-                 col_types = col_spec)
+    readr::read_delim,
+    col_names = headers,
+    col_types = col_spec
+  )
   d <- do.call(rbind, data)
   stopifnot(n_records == nrow(d))
   return(d)
@@ -37,13 +39,17 @@ read_redshift <- function(manifest_file) {
 insert_header <- function(manifest_file) {
   files <- manifest_filelist(manifest_file)
   headers <- manifest_headers(manifest_file)$names
-  header_row <- paste(headers, collapse =",")
+  header_row <- paste(headers, collapse = ",")
 
   fout <- file(paste0(manifest_file, "_edit.sh"))
-  writeLines(paste0("sed -i '1s/^/",
-  header_row,
-  "\\n/' ", files),
-  fout)
+  writeLines(
+    paste0(
+      "sed -i '1s/^/",
+      header_row,
+      "\\n/' ", files
+    ),
+    fout
+  )
   close(fout)
 }
 
@@ -71,16 +77,19 @@ generate_stata_infile <- function(manifest_file) {
   outf <- file(paste(basename(manifest_file), ".do", sep = ""))
   writeLines(sapply(
     files,
-    FUN = function(f, v)
-      c(paste("infile",
-            v,
-            "using"
-            , basename(f),
-            ", clear",
-            sep = " "),
+    FUN = function(f, v) {
+      c(
+        paste("infile",
+          v,
+          "using",
+          basename(f),
+          ", clear",
+          sep = " "
+        ),
         "compress",
         paste("save", f, ", replace", sep = " ")
-      ),
+      )
+    },
     v = varlist
   ), outf)
   close(outf)
@@ -97,11 +106,11 @@ redshift_to_sql_data <- function(type_list) {
 
   # implementing as a switch, since some elements need extra processing
   switch(type_list$base,
-         "integer" = "INTEGER",
-         "double precision" = "DOUBLE",
-         "date" = "DATE",
-         "character varying" = paste0("VARCHAR(",type_list$max_length,")"),
-         stop(paste(type_list$base, " is not on the list of alternatives"))
+    "integer" = "INTEGER",
+    "double precision" = "DOUBLE",
+    "date" = "DATE",
+    "character varying" = paste0("VARCHAR(", type_list$max_length, ")"),
+    stop(paste(type_list$base, " is not on the list of alternatives"))
   )
 }
 
@@ -117,16 +126,18 @@ redshift_to_sql_data <- function(type_list) {
 #'
 #' @examples
 generate_sql_load <- function(manifest_file, s3_url) {
-  outfile <- file(paste0(manifest_file, ".sql"), open="wt")
+  outfile <- file(paste0(manifest_file, ".sql"), open = "wt")
   table_name <- sub("*manifest$", "", basename(manifest_file))
   writeLines(c(paste0("create table if not exists ", table_name, " (")), outfile)
 
   variables <- jsonlite::read_json(manifest_file)$schema$elements
-  varstmts <- sapply(variables, FUN=function(e) paste0(e$name, "\t", redshift_to_sql_data(e$type), ","))
+  varstmts <- sapply(variables, FUN = function(e) paste0(e$name, "\t", redshift_to_sql_data(e$type), ","))
   writeLines(varstmts, outfile)
-  writeLines(c(");","",
-               paste0("copy ", table_name),
-               paste0("from '", s3_url, "'/", basename(manifest_file)),
-               "manifest"), outfile)
+  writeLines(c(
+    ");", "",
+    paste0("copy ", table_name),
+    paste0("from '", s3_url, "'/", basename(manifest_file)),
+    "manifest"
+  ), outfile)
   close(outfile)
 }

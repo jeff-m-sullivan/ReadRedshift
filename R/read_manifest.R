@@ -23,8 +23,9 @@ manifest_filelist <- function(manifest) {
 #' @examples
 manifest_headers <- function(manifest) {
   j <- jsonlite::read_json(manifest)
-  list(names = sapply(j$schema$elements, function(e) e$name),
-       types = sapply(j$schema$elements, function(e) e$type$base)
+  list(
+    names = sapply(j$schema$elements, function(e) e$name),
+    types = sapply(j$schema$elements, function(e) e$type$base)
   )
 }
 
