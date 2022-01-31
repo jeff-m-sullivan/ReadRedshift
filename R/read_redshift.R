@@ -96,7 +96,16 @@ generate_stata_infile <- function(manifest_file) {
 #' redshift_to_sql_data(
 #' list("base"= "character varying", "max_length"= 25))
 redshift_to_sql_data <- function(type_list) {
+  stopifnot("base" %in% names(type_list))
 
+  # implementing as a switch, since some elements need extra processing
+  switch(type_list$base,
+         "integer" = "INTEGER",
+         "double precision" = "DOUBLE",
+         "date" = "DATE",
+         "character varying" = paste0("VARCHAR(",type_list$max_length,")"),
+         stop(paste(type_list$base, " is not on the list of alternatives"))
+  )
 }
 
 
