@@ -33,7 +33,7 @@ test_that("SQL data types rendered properly", {
     redshift_to_sql_data(
       list(base = "double precision")
     ),
-    "DOUBLE"
+    "DOUBLE PRECISION"
   )
   expect_equal(
     redshift_to_sql_data(

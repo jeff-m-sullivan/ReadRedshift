@@ -107,7 +107,7 @@ redshift_to_sql_data <- function(type_list) {
   # implementing as a switch, since some elements need extra processing
   switch(type_list$base,
     "integer" = "INTEGER",
-    "double precision" = "DOUBLE",
+    "double precision" = "DOUBLE PRECISION",
     "date" = "DATE",
     "character varying" = paste0("VARCHAR(", type_list$max_length, ")"),
     stop(paste(type_list$base, " is not on the list of alternatives"))
