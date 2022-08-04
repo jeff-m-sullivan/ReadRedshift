@@ -5,12 +5,14 @@
 \title{Generate SQL loading statements from a manifest file. This assumes that the
 tables need to be created and then the data copied in.}
 \usage{
-generate_sql_load(manifest_file, s3_url)
+generate_sql_load(manifest_file, s3_url, schema = "")
 }
 \arguments{
 \item{manifest_file}{local path to the manifest file}
 
 \item{s3_url}{the S3 bucket where the manifest will be stored for loading}
+
+\item{schema}{(default "") optional schema in which to create the table}
 }
 \value{
 nothing; SQL statements written to file
