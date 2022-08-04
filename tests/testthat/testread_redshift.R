@@ -56,4 +56,12 @@ test_that("SQL data types rendered properly", {
     ),
     "VARCHAR(25)"
   )
+  expect_equal(
+    redshift_to_sql_data(
+      list(
+        base = "bigint"
+      )
+    ),
+    "BIGINT"
+  )
 })

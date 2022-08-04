@@ -5,7 +5,7 @@
   ],
   "schema": {
     "elements": [
-      {"name": "venueid", "type": { "base": "integer" }},
+      {"name": "venueid", "type": { "base": "bigint" }},
       {"name": "venuename", "type": { "base": "character varying", "max_length": 25 }},
       {"name": "venuecity", "type": { "base": "character varying", "max_length": 25 }},
       {"name": "venuestate", "type": { "base": "character varying", "max_length": 25 }},
