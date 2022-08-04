@@ -120,14 +120,16 @@ redshift_to_sql_data <- function(type_list) {
 #'
 #' @param manifest_file local path to the manifest file
 #' @param s3_url the S3 bucket where the manifest will be stored for loading
+#' @param schema (default "") optional schema in which to create the table
 #'
 #' @return nothing; SQL statements written to file
 #' @export
 #'
 #' @examples
-generate_sql_load <- function(manifest_file, s3_url) {
+generate_sql_load <- function(manifest_file, s3_url, schema = "") {
   outfile <- file(paste0(manifest_file, ".sql"), open = "wt")
   table_name <- sub("*manifest$", "", basename(manifest_file))
+  if(schema != "") table_name <- paste(schema, table_name, sep=".")
   writeLines(c(paste0("create table if not exists ", table_name, " (")), outfile)
 
   variables <- jsonlite::read_json(manifest_file)$schema$elements
