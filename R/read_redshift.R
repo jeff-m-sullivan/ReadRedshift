@@ -111,7 +111,8 @@ redshift_to_sql_data <- function(type_list) {
     "date" = "DATE",
     "character varying" = paste0("VARCHAR(", type_list$max_length, ")"),
     "bigint" = "BIGINT",
-    stop(paste(type_list$base, " is not on the list of alternatives"))
+    "timestamp without time zone" = "timestamp without time zone",
+    stop(paste(type_list$base, "is not on the list of alternatives"))
   )
 }
 
