@@ -9,7 +9,7 @@
       {"name": "venuename", "type": { "base": "character varying", "max_length": 25 }},
       {"name": "venuecity", "type": { "base": "character varying", "max_length": 25 }},
       {"name": "venuestate", "type": { "base": "character varying", "max_length": 25 }},
-      {"name": "venueseats", "type": { "base": "integer" }}
+      {"name": "venueseats", "type": { "base": "smallint" }}
     ]
   },
   "meta": {
