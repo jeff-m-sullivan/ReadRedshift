@@ -11,7 +11,6 @@ repos:
         - readr
         - jsonlite
     -   id: use-tidy-description
-    -   id: lintr
     -   id: readme-rmd-rendered
     -   id: parsable-R
     -   id: no-browser-statement
