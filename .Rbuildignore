@@ -1,9 +1,10 @@
-^renv$
-^renv\.lock$
 ^.*\.Rproj$
+^LICENSE\.md$
+^README\.Rmd$
 ^\.Rproj\.user$
 ^\.github$
-^README\.Rmd$
-^LICENSE\.md$
-^data-raw$
+^\.pre-commit-config\.yaml$
 ^codecov\.yml$
+^data-raw$
+^renv$
+^renv\.lock$

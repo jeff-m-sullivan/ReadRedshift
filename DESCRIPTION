@@ -20,7 +20,8 @@ Imports:
     jsonlite
 Suggests: 
     covr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    usethis
 Config/testthat/edition: 3
 RoxygenNote: 7.2.1
 Depends: 
