@@ -2,8 +2,8 @@
 
 redshift_to_r_data <- list(
   "double precision" = "d",
+  "numeric" = "d",
   "character varying" = "c",
-  "date" = "T",
   "integer" = "i",
   "bigint" = "i",
   "timestamp without time zone" = "T",
@@ -17,6 +17,7 @@ redshift_to_r_data <- list(
 
 redshift_to_stata_data <- list(
   "double precision" = "double",
+  "numeric" = "d",
   "character varying" = "str500",
   "date" = "str20",
   "integer" = "long",
@@ -24,8 +25,7 @@ redshift_to_stata_data <- list(
   "timestamp without time zone" = "str20",
   "timestamp" = "str20",
   "time without time zone" = "str20",
-  "time" = "str20",
-  "date" = "str20"
+  "time" = "str20"
 )
 
 usethis::use_data(redshift_to_stata_data,
