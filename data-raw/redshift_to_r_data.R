@@ -28,4 +28,8 @@ redshift_to_stata_data <- list(
   "date" = "str20"
 )
 
-usethis::use_data(redshift_to_stata_data, redshift_to_r_data, overwrite = TRUE, internal = TRUE)
+usethis::use_data(redshift_to_stata_data,
+  redshift_to_r_data,
+  overwrite = TRUE,
+  internal = TRUE
+)
